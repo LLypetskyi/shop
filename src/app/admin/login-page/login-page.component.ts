@@ -29,12 +29,14 @@ export class LoginPageComponent implements OnInit {
     }
     this.submitted = true;
 
-    const user = {
+    const User = {
       email: this.form.value.email,
-      password: this.form.value.password
+      password: this.form.value.password,
+      returnSecureToken: true
     }
 
-    this.auth.login(user).subscribe(res => {
+    this.auth.login(User).subscribe(res => {
+      console.log(res)
       this.form.reset
       this.router.navigate(['/admin', 'dashboard'])
       this.submitted = false
